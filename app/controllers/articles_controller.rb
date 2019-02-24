@@ -12,12 +12,21 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new
-    @article.title = params[:title]
-    @article.description = params[:description]
-    @article.save
-    redirect_to article_path(@article)
+    @the_article = Article.new
+    @the_article.title = params[:title]
+    @the_article.description = params[:description]
+    @the_article.save
+    redirect_to article_path(@the_article)
   end
 
-  # add edit and update methods here
+  def edit
+    @update_article = Article.find(params[:id])
+  end
+
+  def update
+    @update_article = Article.find(params[:id])
+    @update_article.update(params.require(:article))
+    redirect_to article_path(@update_article)
+  end
+
 end
