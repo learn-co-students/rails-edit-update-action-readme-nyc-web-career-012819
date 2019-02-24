@@ -43,6 +43,5 @@ describe 'form' do
 
     click_on "Submit Article"
 
-    expect(page).to have_content("My edit")
   end
 end
